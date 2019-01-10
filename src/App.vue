@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <img src="@/assets/logo.png" alt="">
-    222222
+    <div  @click="show1">container1</div>
+    <div  @click="show2">container2</div>
   </div>
 </template>
 
@@ -10,6 +10,14 @@
     data () {
       return {
 
+      }
+    },
+    methods: {
+      show1 () {
+        this.$toast(111111)
+      },
+      show2 () {
+        this.$toast(222222222)
       }
     }
   }
