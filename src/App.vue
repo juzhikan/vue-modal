@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div  @click="show1">container1</div>
-    <div  @click="show2">container2</div>
+    <div  @click="show2">container4</div>
+    
   </div>
 </template>
 
@@ -25,11 +26,11 @@
 
 <style scoped>
   .container {
-    display: flex;
+    
   }
   img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
 </style>
 

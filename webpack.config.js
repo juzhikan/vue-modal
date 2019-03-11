@@ -1,8 +1,8 @@
 var path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = function (env, argv) {
   var config = {
@@ -10,7 +10,7 @@ module.exports = function (env, argv) {
       index: './src/index.js'
     },
     output: {
-      filename: '[name].js',
+      filename: env.production ? '[name].[chunkhash:8].js' : '[name].js',
       publicPath: '/'
     },
     mode: env.production ? 'production' : 'development',
@@ -36,7 +36,7 @@ module.exports = function (env, argv) {
           commons: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendor",
-            chunks: "all",
+            chunks: "all"
           },
         },
       },
@@ -86,6 +86,7 @@ module.exports = function (env, argv) {
       ]
     },
     plugins : [
+      new CleanWebpackPlugin(['./dist']),
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: 'index.html',

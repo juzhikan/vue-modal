@@ -35,7 +35,26 @@
   </script>
   </head>
   <body>
+    <div><img src="https://easyread.nosdn.127.net/web/trunk/1550482654780/panda-pro.png"></div>
     <div id="app">
     </div>
   </body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js')
+              .then(function (registration) {
+
+                  // 注册成功
+                  console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              })
+              .catch(function (err) {
+
+                  // 注册失败:(
+                  console.log('ServiceWorker registration failed: ', err);
+              });
+      });
+      
+    }
+  </script>
 </html>
